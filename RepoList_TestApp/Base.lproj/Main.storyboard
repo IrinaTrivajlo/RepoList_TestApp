@@ -1,24 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qq8-oT-RPs">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Repo List Controller-->
+        <scene sceneID="K17-iA-bBb">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController id="qq8-oT-RPs" customClass="RepoListController" customModule="RepoList_TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mLf-6b-8zV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dOp-6V-cxq">
+                                <rect key="frame" x="0.0" y="160" width="414" height="736"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="60" id="1X1-la-y3z">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1X1-la-y3z" id="PvV-39-lHQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qq8-oT-RPs" id="f31-ps-tbp"/>
+                                    <outlet property="delegate" destination="qq8-oT-RPs" id="kDV-wb-zlA"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XMH-K2-Q8V">
+                                <rect key="frame" x="0.0" y="104" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qq8-oT-RPs" id="gxD-GQ-gR7"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eP5-3p-b8P"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XMH-K2-Q8V" firstAttribute="top" secondItem="eP5-3p-b8P" secondAttribute="top" constant="60" id="FGP-mc-whg"/>
+                            <constraint firstItem="dOp-6V-cxq" firstAttribute="top" secondItem="XMH-K2-Q8V" secondAttribute="bottom" id="HWe-bu-CIS"/>
+                            <constraint firstItem="XMH-K2-Q8V" firstAttribute="leading" secondItem="eP5-3p-b8P" secondAttribute="leading" id="OSw-jI-bse"/>
+                            <constraint firstItem="dOp-6V-cxq" firstAttribute="trailing" secondItem="eP5-3p-b8P" secondAttribute="trailing" id="Q1n-p7-wrg"/>
+                            <constraint firstAttribute="bottom" secondItem="dOp-6V-cxq" secondAttribute="bottom" id="cZl-Ug-8ad"/>
+                            <constraint firstItem="dOp-6V-cxq" firstAttribute="top" secondItem="XMH-K2-Q8V" secondAttribute="bottom" id="mho-iZ-1fO"/>
+                            <constraint firstItem="dOp-6V-cxq" firstAttribute="leading" secondItem="eP5-3p-b8P" secondAttribute="leading" id="nPI-OV-PaW"/>
+                            <constraint firstItem="XMH-K2-Q8V" firstAttribute="trailing" secondItem="eP5-3p-b8P" secondAttribute="trailing" id="ufZ-og-19i"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="repoListTableView" destination="dOp-6V-cxq" id="sf0-Xi-R6H"/>
+                        <outlet property="searchBar" destination="XMH-K2-Q8V" id="gHi-jO-xec"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="783-k1-VRL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1000.0000000000001" y="-80.357142857142847"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
